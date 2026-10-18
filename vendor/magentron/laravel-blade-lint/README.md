@@ -1,0 +1,128 @@
+# Laravel Blade Lint
+
+[![Latest Stable Version](http://poser.pugx.org/magentron/laravel-blade-lint/v)](https://packagist.org/packages/magentron/laravel-blade-lint)
+[![Total Downloads](http://poser.pugx.org/magentron/laravel-blade-lint/downloads)](https://packagist.org/packages/magentron/laravel-blade-lint)
+[![License](http://poser.pugx.org/magentron/laravel-blade-lint/license)](https://packagist.org/packages/magentron/laravel-blade-lint)
+[![StyleCI](https://github.styleci.io/repos/134142812/shield)](https://github.styleci.io/repos/134142812)
+<br>
+[![Laravel 12.x](https://img.shields.io/badge/Laravel-12.x-green.svg)](https://github.com/laravel/framework/tree/12.x)
+[![Laravel 11.x](https://img.shields.io/badge/Laravel-11.x-green.svg)](https://github.com/laravel/framework/tree/11.x)
+[![Laravel 10.x](https://img.shields.io/badge/Laravel-10.x-green.svg)](https://github.com/laravel/framework/tree/10.x)
+[![Laravel 9.x](https://img.shields.io/badge/Laravel-9.x-green.svg)](https://github.com/laravel/framework/tree/9.x)
+[![Laravel 8.x](https://img.shields.io/badge/Laravel-8.x-green.svg)](https://github.com/laravel/framework/tree/8.x)
+[![Laravel 7.x](https://img.shields.io/badge/Laravel-7.x-green.svg)](https://github.com/laravel/framework/tree/7.x)
+[![Laravel 6.x](https://img.shields.io/badge/Laravel-6.x-green.svg)](https://github.com/laravel/framework/tree/6.x)
+[![Laravel 5.x](https://img.shields.io/badge/Laravel-5.x-green.svg)](https://github.com/laravel/framework/tree/5.8)
+
+Laravel console command to check syntax of blade templates.
+
+# Requirements
+
+- PHP 5.6 or above
+- Laravel 5.4 or above (including Laravel 12)
+- [PCNTL extension](https://www.php.net/manual/en/book.pcntl.php) (optional, for multi-process support)
+- [POSIX extension](https://www.php.net/manual/en/book.posix.php) (optional, for multi-process support)
+
+# Installation
+
+Add package via composer:
+
+    composer require --dev magentron/laravel-blade-lint
+
+For Laravel version < 5.5, edit `config/app.php`, add the following to
+the `providers` array:
+
+    Magentron\BladeLint\Providers\ServiceProvider::class,
+
+# Usage
+
+From the command line, run:
+
+    php artisan blade:lint
+
+It attempts to determine automatically the number of CPU cores that your
+system has and to use all cores by starting child worker processes
+(requires the [PHP POSIX extension](https://www.php.net/manual/en/book.posix.php)).
+
+You can use different levels of verbosity for somewhat more detailed
+information.
+
+Standard help output:
+
+```
+$ php artisan blade:lint -h
+Description:
+  Laravel Blade Lint - syntax checking of blade templates
+
+Usage:
+  blade:lint [options] [--] [<path>...]
+
+Arguments:
+  path
+
+Options:
+      --debug                  Enable debug output, which consists of the compiled templates (PHP code)
+  -p, --processes[=PROCESSES]  The number of test processes to run. [default: "auto"]
+  -h, --help                   Display help for the given command. When no command is given display help for the list command
+  -q, --quiet                  Do not output any message
+  -V, --version                Display this application version
+      --ansi|--no-ansi         Force (or disable --no-ansi) ANSI output
+  -n, --no-interaction         Do not ask any interactive question
+      --env[=ENV]              The environment the command should run under
+  -v|vv|vvv, --verbose         Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+```
+
+# Development
+
+Development of this package requires PHP 8 or higher.
+
+## Running Tests
+
+```bash
+# Install dependencies
+composer install
+
+# Run tests
+make test
+
+# Run tests with coverage report
+make test-coverage
+```
+
+The coverage report will be generated in `build/coverage/`.
+
+## Static Analysis
+
+```bash
+# Run all static analysis tools
+make static-analysis
+
+# Individual tools
+make phpstan
+make psalm
+make php-cs-fixer-dry
+```
+
+# Reporting bugs/issues
+
+If you find a bug please report a bug on GitHub:<br>
+[https://github.com/Magentron/laravel-blade-lint/issues](https://github.com/Magentron/laravel-blade-lint/issues).
+
+# Author
+ 
+[Jeroen Derks](https://www.phpfreelancer.nl), a.k.a [Magentron](https://github.com/Magentron)
+
+# License
+
+Laravel Blade Lint is free software: you can redistribute it and/or
+modify it under the terms of the GNU General Public License as published
+by the Free Software Foundation, either version 3 of the License, or (at
+your option) any later version.
+
+Laravel Blade Lint is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with Laravel Blade Lint.  If not, see <http://www.gnu.org/licenses/>.
